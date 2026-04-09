@@ -45,40 +45,55 @@ export default function Home() {
           className="text-center z-10 px-6 md:px-8"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotateX: 45 }}
-            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="perspective-1000"
+            className="perspective-1000 relative"
           >
+            {/* Cinematic Light Sweep */}
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: '200%' }}
+              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+              className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] pointer-events-none"
+            />
+            
             <FunkyHeading 
               as="h1" 
-              className="text-[18vw] md:text-[12vw] leading-none mb-4 bg-gradient-to-b from-white via-white to-purple-500/50 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.3)] skew-x-[-10deg] rotate-[-2deg]"
+              className="text-[11vw] md:text-[10vw] leading-none mb-4 text-white drop-shadow-[0_0_30px_rgba(168,85,247,0.3)] skew-x-[-5deg]"
             >
               Monishwar
             </FunkyHeading>
           </motion.div>
           
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-[10px] md:text-lg font-light tracking-[0.3em] md:tracking-[0.5em] uppercase text-white/40 max-w-2xl mx-auto px-4"
+            transition={{ duration: 1, delay: 0.8 }}
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-[8px] md:text-sm font-bold tracking-[0.4em] uppercase text-white/60"
           >
-            Creative Director & Motion Artist
-          </motion.p>
+            <span>Motion Designer</span>
+            <span className="w-1 h-1 bg-purple-500 rounded-full" />
+            <span>Video Editor</span>
+            <span className="w-1 h-1 bg-purple-500 rounded-full" />
+            <span>Visual Creator</span>
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 md:mt-16"
+            transition={{ delay: 1.2 }}
+            className="mt-16 md:mt-20"
           >
             <Link
               to="/work"
               data-cursor="WORKS"
-              className="px-8 md:px-12 py-4 md:py-5 bg-white text-black font-black uppercase tracking-widest rounded-full hover:bg-purple-500 hover:text-white transition-all duration-500 shadow-[0_0_40px_rgba(168,85,247,0.2)] text-xs md:text-base"
+              className="group relative px-10 md:px-14 py-4 md:py-5 overflow-hidden rounded-full transition-all duration-500"
             >
-              View Portfolio
+              <div className="absolute inset-0 bg-white group-hover:bg-purple-600 transition-colors duration-500" />
+              <span className="relative z-10 text-black group-hover:text-white font-black uppercase tracking-widest text-xs md:text-base">
+                View Showcase
+              </span>
             </Link>
           </motion.div>
         </motion.div>
@@ -103,7 +118,7 @@ export default function Home() {
               <Link to="/work" className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/40 hover:text-purple-500 transition-colors">View All →</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-              <div className="md:col-span-8">
+              <div className="md:col-span-9">
                 <WorkCard 
                   index={1} 
                   title="Neon Pulse" 
@@ -124,7 +139,7 @@ export default function Home() {
                   })}
                 />
               </div>
-              <div className="md:col-span-4">
+              <div className="md:col-span-3">
                 <WorkCard 
                   index={2} 
                   title="Cyber Flow" 
@@ -155,7 +170,7 @@ export default function Home() {
               <Link to="/work" className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/40 hover:text-purple-500 transition-colors">View All →</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-              <div className="md:col-span-4">
+              <div className="md:col-span-3">
                 <WorkCard 
                   index={2} 
                   title="Cinematic Soul" 
@@ -176,7 +191,7 @@ export default function Home() {
                   })}
                 />
               </div>
-              <div className="md:col-span-8">
+              <div className="md:col-span-9">
                 <WorkCard 
                   index={1} 
                   title="Urban Rhythm" 

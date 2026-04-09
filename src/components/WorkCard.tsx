@@ -28,61 +28,71 @@ export default function WorkCard({
 }: WorkCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       data-cursor={type === 'video' ? "PLAY" : "VIEW"}
       onClick={onClick}
       className={cn(
-        "group relative bg-zinc-900 rounded-2xl overflow-hidden border border-white/10 cursor-pointer w-full flex items-center justify-center",
-        aspectRatio === '16/9' && "aspect-video",
-        aspectRatio === '9/16' && "aspect-[9/16]",
-        aspectRatio === '4/5' && "aspect-[4/5]"
+        "group relative bg-zinc-900 rounded-2xl overflow-hidden border border-white/5 cursor-pointer w-full flex items-center justify-center transition-all duration-700 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-white/20 h-[350px] md:h-[500px]"
       )}
     >
       <motion.div
-        className="relative w-full h-full flex items-center justify-center"
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full h-full flex items-center justify-center overflow-hidden"
+        whileHover={{ scale: 1.08 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700"
+          className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:blur-0 blur-[2px]"
           referrerPolicy="no-referrer"
         />
         
-        {/* Video Overlay for Motion/Video */}
-        {type === 'video' && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-purple-500 rounded-full flex items-center justify-center opacity-100 md:opacity-0 group-hover:opacity-100 scale-100 md:scale-50 group-hover:scale-100 transition-all duration-500 shadow-[0_0_30px_rgba(168,85,247,0.5)]">
-              <Play fill="white" size={20} className="md:size-24" />
-            </div>
-          </div>
-        )}
-
-        {/* Image Overlay for Graphic Design */}
-        {type === 'image' && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 md:opacity-0 group-hover:opacity-100 scale-100 md:scale-50 group-hover:scale-100 transition-all duration-500 border border-white/20">
-              <ImageIcon size={20} className="md:size-24" />
-            </div>
-          </div>
-        )}
+        {/* Cinematic Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700" />
+        
+        {/* Play/View Icon */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ opacity: 1, scale: 1 }}
+            className="w-14 h-14 md:w-20 md:h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500"
+          >
+            {type === 'video' ? (
+              <Play fill="white" size={24} className="text-white ml-1" />
+            ) : (
+              <ImageIcon size={24} className="text-white" />
+            )}
+          </motion.div>
+        </div>
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      
-      <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none text-left">
-        <p className="text-purple-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2">{category}</p>
-        <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tighter italic leading-tight mb-2">{title}</h3>
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 pointer-events-none text-left">
+        <motion.p 
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="text-purple-500 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] mb-3"
+        >
+          {category}
+        </motion.p>
+        <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter italic leading-none mb-4 group-hover:text-glow transition-all duration-500">
+          {title}
+        </h3>
         {description && (
-          <p className="text-white/50 text-[10px] md:text-xs line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+          <p className="text-white/40 text-[10px] md:text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 max-w-md">
             {description}
           </p>
         )}
       </div>
+      
+      {/* Corner Accents */}
+      <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
     </motion.div>
   );
 }

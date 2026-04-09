@@ -35,53 +35,76 @@ export default function About() {
   });
 
   return (
-    <div className="pt-24 md:pt-32 pb-40 px-6 md:px-8 max-w-7xl mx-auto">
+    <div className="pt-24 md:pt-40 pb-40 px-6 md:px-8 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-32 md:mb-40"
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-40 md:mb-60"
       >
-        <FunkyHeading as="h1" className="text-[12vw] md:text-[10vw] mb-12 md:mb-20">The Story</FunkyHeading>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-white/70 leading-relaxed">
-            <p>
-              Hi, I’m Monishwar — a passionate freelance graphic designer and video editor with over 3 years of hands-on experience in crafting visually compelling and impactful digital content.
-            </p>
-            <p>
-              I specialize in bringing ideas to life through creative design and engaging video storytelling. With strong expertise in industry-leading tools like Adobe Photoshop, Illustrator, After Effects, and Premiere Pro, along with a working knowledge of Blender, I deliver high-quality visuals that align perfectly with brand identity and audience expectations.
-            </p>
-            <p>
-              My approach combines creativity with strategy — whether it’s designing eye-catching graphics, editing dynamic videos, or building a complete digital presence for brands. I focus on understanding each client’s vision and transforming it into powerful visual communication that stands out in today’s competitive digital space.
-            </p>
-            <p>
-              If you’re looking to elevate your brand and create a strong impact across digital platforms, I’m here to help make it happen.
-            </p>
+        <FunkyHeading as="h1" className="text-[14vw] md:text-[12vw] mb-16 md:mb-24 leading-none">The Vision</FunkyHeading>
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-start">
+          <div className="md:col-span-7 space-y-10 md:space-y-16">
+            <motion.h2 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-3xl md:text-6xl font-black uppercase tracking-tighter italic leading-tight"
+            >
+              Crafting visual narratives that <span className="text-purple-500">resonate</span> and <span className="text-blue-500">inspire</span>.
+            </motion.h2>
+            
+            <div className="space-y-8 text-lg md:text-2xl text-white/60 leading-relaxed font-light">
+              <p>
+                Hi, I’m Monishwar — a passionate freelance graphic designer and video editor with over 3 years of hands-on experience in crafting visually compelling and impactful digital content.
+              </p>
+              <p>
+                I specialize in bringing ideas to life through creative design and engaging video storytelling. With strong expertise in industry-leading tools like Adobe Photoshop, Illustrator, After Effects, and Premiere Pro, along with a working knowledge of Blender, I deliver high-quality visuals that align perfectly with brand identity and audience expectations.
+              </p>
+              <p>
+                My approach combines creativity with strategy — whether it’s designing eye-catching graphics, editing dynamic videos, or building a complete digital presence for brands. I focus on understanding each client’s vision and transforming it into powerful visual communication that stands out in today’s competitive digital space.
+              </p>
+            </div>
           </div>
-          <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10 group">
-            <img
-              src="https://picsum.photos/seed/monish/800/800"
-              alt="Monishwar"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-purple-500/20 mix-blend-overlay" />
+          
+          <div className="md:col-span-5 sticky top-32">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl"
+            >
+              <img
+                src="https://picsum.photos/seed/monishwar/800/1000"
+                alt="Monishwar"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-8 left-8">
+                <p className="text-purple-500 text-xs font-black uppercase tracking-widest mb-1">Based in</p>
+                <p className="text-white text-xl font-bold uppercase tracking-tighter italic">Digital Space</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
 
-      {/* Visual Timeline */}
-      <section ref={containerRef} className="relative py-12 md:py-20">
-        <FunkyHeading className="text-4xl md:text-7xl mb-20 md:mb-32">The Journey</FunkyHeading>
+      {/* Cinematic Timeline */}
+      <section ref={containerRef} className="relative py-20 md:py-40">
+        <div className="flex flex-col items-center mb-32">
+          <p className="text-purple-500 text-xs md:text-sm font-black uppercase tracking-[0.5em] mb-6">Experience</p>
+          <FunkyHeading className="text-5xl md:text-9xl">The Journey</FunkyHeading>
+        </div>
         
-        <div className="relative max-w-4xl mx-auto">
-          {/* Progress Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
+        <div className="relative max-w-5xl mx-auto">
+          {/* Vertical Progress Line */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
           <motion.div 
             style={{ scaleY }}
-            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-purple-500 origin-top -translate-x-1/2 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 origin-top -translate-x-1/2 shadow-[0_0_20px_rgba(168,85,247,0.5)]"
           />
           
-          <div className="space-y-16 md:space-y-32">
+          <div className="space-y-24 md:space-y-48">
             {timeline.map((item, i) => (
               <TimelineItem key={i} {...item} index={i} />
             ))}
@@ -133,24 +156,38 @@ export default function About() {
 function TimelineItem({ year, title, desc, index }: { year: string; title: string; desc: string; index: number }) {
   const isEven = index % 2 === 0;
   return (
-    <div className={cn("flex flex-col md:flex-row items-center justify-between w-full relative pl-12 md:pl-0", isEven ? "md:flex-row" : "md:flex-row-reverse")}>
-      <div className="w-full md:w-[45%]">
+    <div className={cn("flex flex-col md:flex-row items-center justify-between w-full relative pl-16 md:pl-0", isEven ? "md:flex-row" : "md:flex-row-reverse")}>
+      <div className="w-full md:w-[42%]">
         <motion.div
           initial={{ opacity: 0, x: isEven ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md hover:border-purple-500/50 transition-colors group"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white/5 p-8 md:p-12 rounded-3xl border border-white/5 backdrop-blur-xl hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden"
         >
-          <span className="text-purple-500 font-black text-xl md:text-2xl italic">{year}</span>
-          <h3 className="text-lg md:text-xl font-bold mt-2 uppercase tracking-tighter">{title}</h3>
-          <p className="text-white/50 text-xs md:text-sm mt-4 leading-relaxed">{desc}</p>
+          {/* Background Glow */}
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/10 blur-[80px] group-hover:bg-purple-500/20 transition-all duration-700" />
+          
+          <span className="text-purple-500 font-black text-2xl md:text-4xl italic mb-4 block tracking-tighter">{year}</span>
+          <h3 className="text-xl md:text-3xl font-black mt-2 uppercase tracking-tighter italic leading-none">{title}</h3>
+          <p className="text-white/40 text-sm md:text-lg mt-6 leading-relaxed font-light">{desc}</p>
+          
+          {/* Corner Accent */}
+          <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-white/10 group-hover:border-purple-500/50 transition-colors duration-500" />
         </motion.div>
       </div>
       
-      {/* Center Dot */}
-      <div className="absolute left-4 md:left-1/2 top-0 md:top-1/2 w-3 h-3 md:w-4 md:h-4 bg-purple-500 rounded-full -translate-x-1/2 md:-translate-y-1/2 shadow-[0_0_20px_rgba(168,85,247,0.5)] z-10" />
+      {/* Center Dot with Pulse */}
+      <div className="absolute left-6 md:left-1/2 top-0 md:top-1/2 w-4 h-4 md:w-6 md:h-6 -translate-x-1/2 md:-translate-y-1/2 z-10">
+        <div className="absolute inset-0 bg-purple-500 rounded-full shadow-[0_0_30px_rgba(168,85,247,0.8)]" />
+        <motion.div 
+          animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute inset-0 bg-purple-500 rounded-full"
+        />
+      </div>
       
-      <div className="hidden md:block w-[45%]" />
+      <div className="hidden md:block w-[42%]" />
     </div>
   );
 }

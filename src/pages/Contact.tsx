@@ -14,62 +14,55 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-24 md:pt-32 pb-20 px-6 md:px-8 max-w-7xl mx-auto">
-      <FunkyHeading as="h1" className="text-[14vw] md:text-[10vw] mb-16 md:mb-20">The Contact</FunkyHeading>
+    <div className="pt-24 md:pt-40 pb-40 px-6 md:px-8 max-w-7xl mx-auto">
+      <FunkyHeading as="h1" className="text-[14vw] md:text-[10vw] mb-16 md:mb-32 leading-none">The Contact</FunkyHeading>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32">
         {/* Contact Info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-10 md:space-y-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="space-y-12 md:space-y-20"
         >
-          <div className="space-y-4 md:space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-widest">Let's Talk</h2>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-md">
-              Have a project in mind? Or just want to say hi? Feel free to reach out. I'm always open to new opportunities and creative collaborations.
+          <div className="space-y-6 md:space-y-10">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic leading-none">Let's <span className="text-purple-500">Collaborate</span></h2>
+            <p className="text-white/40 text-lg md:text-2xl leading-relaxed max-w-md font-light italic">
+              Ready to elevate your visual presence? Let's build something cinematic together.
             </p>
           </div>
 
-          <div className="space-y-6 md:space-y-8">
-            <div className="flex items-center gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-purple-500 transition-colors shrink-0">
-                <Mail className="text-purple-500 group-hover:text-white transition-colors" size={20} />
+          <div className="space-y-8 md:space-y-12">
+            <div className="flex items-center gap-6 md:gap-8 group">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/5 group-hover:bg-purple-600 transition-all duration-500 group-hover:rotate-12 group-hover:border-purple-500 shrink-0">
+                <Mail className="text-purple-500 group-hover:text-white transition-colors" size={24} strokeWidth={1.5} />
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Email Me</p>
-                <p className="text-base md:text-xl font-bold">hello@monish.design</p>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-white/20 mb-1">Direct Line</p>
+                <p className="text-lg md:text-2xl font-bold tracking-tight">hello@monishwar.design</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-purple-500 transition-colors shrink-0">
-                <Phone className="text-purple-500 group-hover:text-white transition-colors" size={20} />
+            <div className="flex items-center gap-6 md:gap-8 group">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/5 group-hover:bg-purple-600 transition-all duration-500 group-hover:rotate-12 group-hover:border-purple-500 shrink-0">
+                <MapPin className="text-purple-500 group-hover:text-white transition-colors" size={24} strokeWidth={1.5} />
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Call Me</p>
-                <p className="text-base md:text-xl font-bold">+1 (555) 123-4567</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-purple-500 transition-colors shrink-0">
-                <MapPin className="text-purple-500 group-hover:text-white transition-colors" size={20} />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">Location</p>
-                <p className="text-base md:text-xl font-bold">New York, NY</p>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-white/20 mb-1">Location</p>
+                <p className="text-lg md:text-2xl font-bold tracking-tight">Digital Space / Remote</p>
               </div>
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-6">
             {[Instagram, Twitter, Linkedin].map((Icon, i) => (
               <motion.a
                 key={i}
                 href="#"
-                whileHover={{ y: -5, scale: 1.1 }}
-                className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-purple-500 hover:text-purple-500 transition-all"
+                whileHover={{ y: -8, scale: 1.1, rotate: 5 }}
+                className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-full flex items-center justify-center border border-white/5 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-500 group"
               >
-                <Icon size={18} />
+                <Icon size={20} className="group-hover:text-purple-500 transition-colors" />
               </motion.a>
             ))}
           </div>
@@ -77,61 +70,56 @@ export default function Contact() {
 
         {/* Contact Form */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white/5 p-6 md:p-10 rounded-3xl border border-white/10 backdrop-blur-md"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white/5 p-8 md:p-14 rounded-[3rem] border border-white/5 backdrop-blur-xl shadow-2xl relative overflow-hidden"
         >
-          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.3em] text-white/40 ml-4">Name</label>
+          {/* Background Accent */}
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-purple-500/5 blur-[100px] pointer-events-none" />
+          
+          <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+              <div className="space-y-3">
+                <label className="text-[10px] uppercase tracking-[0.5em] text-white/20 ml-6">Name</label>
                 <input
                   type="text"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500 transition-colors text-sm"
+                  className="w-full bg-white/5 border border-white/5 rounded-2xl px-8 py-5 focus:outline-none focus:border-purple-500/50 transition-all duration-500 text-sm md:text-base font-light italic"
                   placeholder="John Doe"
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-[10px] uppercase tracking-[0.3em] text-white/40 ml-4">Email</label>
+              <div className="space-y-3">
+                <label className="text-[10px] uppercase tracking-[0.5em] text-white/20 ml-6">Email</label>
                 <input
                   type="email"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500 transition-colors text-sm"
+                  className="w-full bg-white/5 border border-white/5 rounded-2xl px-8 py-5 focus:outline-none focus:border-purple-500/50 transition-all duration-500 text-sm md:text-base font-light italic"
                   placeholder="john@example.com"
                 />
               </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-white/40 ml-4">Subject</label>
-              <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500 transition-colors appearance-none text-sm">
-                <option className="bg-black">General Inquiry</option>
-                <option className="bg-black">Project Collaboration</option>
-                <option className="bg-black">Job Opportunity</option>
-                <option className="bg-black">Other</option>
-              </select>
-            </div>
-            <div className="space-y-2">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-white/40 ml-4">Message</label>
+            <div className="space-y-3">
+              <label className="text-[10px] uppercase tracking-[0.5em] text-white/20 ml-6">Message</label>
               <textarea
                 required
-                rows={5}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-purple-500 transition-colors resize-none text-sm"
-                placeholder="Tell me about your project..."
+                rows={4}
+                className="w-full bg-white/5 border border-white/5 rounded-3xl px-8 py-6 focus:outline-none focus:border-purple-500/50 transition-all duration-500 resize-none text-sm md:text-base font-light italic"
+                placeholder="Tell me about your vision..."
               />
             </div>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={cn(
-                "w-full py-4 md:py-5 rounded-2xl font-bold uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-500 text-xs md:text-sm",
-                isSubmitted ? "bg-green-500 text-white" : "bg-purple-500 text-white hover:bg-purple-600 shadow-[0_0_30px_rgba(168,85,247,0.3)]"
+                "w-full py-5 md:py-6 rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-4 transition-all duration-700 text-xs md:text-base shadow-2xl",
+                isSubmitted ? "bg-green-500 text-white" : "bg-white text-black hover:bg-purple-600 hover:text-white"
               )}
             >
               {isSubmitted ? "Message Sent!" : (
                 <>
-                  Send Message <Send size={18} />
+                  Initiate Project <Send size={20} />
                 </>
               )}
             </motion.button>

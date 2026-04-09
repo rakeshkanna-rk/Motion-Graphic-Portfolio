@@ -34,21 +34,24 @@ export default function Navbar() {
     <>
       <nav 
         className={cn(
-          "fixed top-0 left-0 w-full z-[60] px-6 md:px-12 py-4 md:py-6 flex justify-between items-center transition-all duration-500",
-          isScrolled ? "bg-black/60 backdrop-blur-xl border-b border-white/5 py-4" : "bg-transparent"
+          "fixed top-0 left-0 w-full z-[60] px-6 md:px-12 py-6 md:py-10 flex justify-between items-center transition-all duration-700",
+          isScrolled ? "bg-black/80 backdrop-blur-2xl border-b border-white/5 py-4 md:py-6" : "bg-transparent"
         )}
       >
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl md:text-2xl font-bold tracking-tighter text-white z-[70]"
+          className="text-2xl md:text-3xl font-black tracking-tighter text-white z-[70] italic group"
         >
-          <Link to="/" data-cursor="HOME">MONISH.</Link>
+          <Link to="/" data-cursor="HOME" className="relative overflow-hidden block">
+            <span className="block group-hover:-translate-y-full transition-transform duration-500">MONISHWAR.</span>
+            <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-purple-500">MONISHWAR.</span>
+          </Link>
         </motion.div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-12">
-          <div className="flex gap-8">
+          <div className="flex gap-10">
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.path}
@@ -60,15 +63,15 @@ export default function Navbar() {
                   to={link.path}
                   data-cursor="GO"
                   className={cn(
-                    "text-xs font-bold uppercase tracking-widest transition-all hover:text-purple-400 relative py-2",
-                    location.pathname === link.path ? "text-purple-500" : "text-white/70"
+                    "text-[10px] font-black uppercase tracking-[0.4em] transition-all hover:text-purple-400 relative py-2",
+                    location.pathname === link.path ? "text-purple-500" : "text-white/50"
                   )}
                 >
                   {link.name}
                   {location.pathname === link.path && (
                     <motion.div 
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 w-full h-px bg-purple-500"
+                      className="absolute bottom-0 left-0 w-full h-px bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
                     />
                   )}
                 </Link>
@@ -79,10 +82,10 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden z-[70] p-2 text-white"
+          className="md:hidden z-[70] p-2 text-white bg-white/5 rounded-full backdrop-blur-md border border-white/10"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 

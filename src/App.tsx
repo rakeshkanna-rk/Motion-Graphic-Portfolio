@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -73,10 +74,10 @@ function AnimatedRoutes() {
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -87,10 +88,32 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      lenis.destroy();
+    };
   }, []);
 
   return (
